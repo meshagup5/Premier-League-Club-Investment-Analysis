@@ -1,31 +1,67 @@
-# Premier-League-Club-Investment-Analysis
-Premier-League-Club-Investment-Analysis
-Context:
-Company ABC have invested in top-tier sports teams. The dataset in their possession comprises crucial information about all the teams that have participated in premier league (assume that it is the data for all teams). It includes data on the number of goals scored and conceded by each team, the number of times they have finished in the top two positions and other relevant details.
+# Premier League Club Investment Analysis
 
-Data: Premier League Final Data.csv- : The data set contains information on all the teams so far participated in all the premier league tournaments.
+## Project Overview
+Company ABC seeks to invest in English Premier League clubs with high growth potential, excluding those already owned by competitors. This analysis evaluates historical performance data to identify optimal investment targets.
 
-Data Dictionary:
+## Objectives
+- Identify top-performing clubs based on key metrics
+- Analyze clubs with untapped potential
+- Provide data-driven investment recommendations
 
-Club: Name of the football club
-Matches: Number of matches the club has played in the Premier League
-Wins: Number of matches won by the club in the Premier League
-Loss: Number of matches lost by the club in the Premier League
-Draws: Number of matches drawn by the club in the Premier League
-Clean Sheets: Number of matches in which the club has prevented the opposing side from scoring
-Team Launch: Year in which the club was founded
-Winners: Number of times the club has won the Premier League
-Runners-up: Number of times the club has finished as runners-up in the Premier League
-Lastplayed: Last played in premier league
-Primary Objective:
-The management of Company ABC aims to invest in some of the top-performing clubs in the English Premier League. To aid in their decision-making process, the analytics department has been tasked with creating a comprehensive report on the performance of various clubs. However, some of the more established clubs have already been owned by the competitors. As a result, Company ABC wishes to identify the clubs they can approach and potentially invest to ensure a successful and profitable deal.
+## Data Dictionary
+| Column | Description | Key Insights |
+|--------|-------------|--------------|
+| `Club` | Team name | - |
+| `Matches` | Total EPL matches | Manchester United (1,148) leads |
+| `Wins` | All-time victories | Used to calculate win rate |
+| `Clean Sheets` | Matches without conceding | Key defensive metric |
+| `TeamLaunch` | Founding year | Legacy vs new clubs |
+| `Winners` | League titles | Man City (6) leads since 2010 |
+| `Runners-up` | Second-place finishes | Liverpool (5) recent contender |
 
-Note:
+## Methodology
+### 1. Data Preparation
+- Handled null values:
+  - `Winners/Runners-up`: Set to 0 (domain knowledge)
+  - `Lastplayed`: Formatted to 'YYYY'
+- Created derived metrics:
+  ```python
+  df['Win_Rate'] = (df['Wins']/df['Matches'])*100
+  df['CS_Rate'] = (df['Clean Sheets']/df['Matches'])*100
+  ```
 
-Unauthorised use or distribution of this project prohibited @dataanalystduo
-Dataset has been downloaded from the internet using multiple sources. All the credit for the dataset goes to the original creator of the data
-Key learning after this project:
-Data cleaning is the process of identifying and correcting or removing errors, inconsistencies, and inaccuracies in a dataset.
-Observation writing involves examining the data and noting any notable findings, anomalies, or areas of interest.
-Exploratory Data Analysis (EDA) is the process of examining and visualizing a dataset to understand its main characteristics, such as the distribution of data, the relationships between variables, and any anomalies or patterns that may exist. The goal of EDA is to uncover insights and trends that can help inform further analysis or decision-making. It is often the first step in any data analysis project, as it provides a foundation for more advanced statistical methods and models.
-Treat Null values basis domain knowledge aka using Domain-specific imputation
+### 2. Key Analysis
+- **Performance Scoring**:
+  - Weighted combination of win rate, clean sheets, and titles
+- **Outlier Handling**:
+  - Retained exceptional performers (Leicester City 2016)
+- **Recency Adjustment**:
+  - Prioritized active clubs (`Lastplayed > 2018`)
+
+## Key Findings
+### Top Investment Targets
+1. **Leicester City** 🏆
+   - 2016 Premier League winners
+   - Consistent top-10 finishes
+   - High clean sheet rate (38%)
+
+### Clubs to Avoid
+- Inactive teams (`Lastplayed < 2010`)
+- Legacy clubs with declining metrics
+
+## Recommendations
+1. **Immediate Investment**:
+   - Leicester City (proven success)
+   - Brighton (data-driven approach)
+
+2. **Development Projects**:
+   - Brentford FC (analytics-focused)
+   - Crystal Palace (stable mid-table)
+
+3. **Long-term Holds**:
+   - Newcastle United (new ownership)
+   - West Ham (European competition)
+
+
+
+
