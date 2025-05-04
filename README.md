@@ -54,14 +54,4 @@ Company ABC seeks to invest in English Premier League clubs with high growth pot
    - Leicester City (proven success)
    - Brighton (data-driven approach)
 
-2. **Development Projects**:
-   - Brentford FC (analytics-focused)
-   - Crystal Palace (stable mid-table)
-
-3. **Long-term Holds**:
-   - Newcastle United (new ownership)
-   - West Ham (European competition)
-
-
-
 
